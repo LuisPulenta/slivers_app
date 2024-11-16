@@ -28,14 +28,14 @@ class _BotonNewList extends StatelessWidget {
     return ButtonTheme(
       minWidth: size.width * 0.9,
       height: 100,
-      child: RaisedButton(
-        color: Color(0xffed6762),
-        shape: RoundedRectangleBorder(
+      child: MaterialButton(
+        color: const Color(0xffed6762),
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(50),
           ),
         ),
-        child: Text("CREATE NEW LIST",
+        child: const Text("CREATE NEW LIST",
             style: TextStyle(
                 color: Colors.white,
                 fontSize: 18,
@@ -51,26 +51,28 @@ class _BotonNewList extends StatelessWidget {
 
 class _MainScroll extends StatelessWidget {
   final items = [
-    _ListItem('Orange', Color(0xffF08F66)),
-    _ListItem('Family', Color(0xffF2A38A)),
-    _ListItem('Subscriptions', Color(0xffF7CDD5)),
-    _ListItem('Books', Color(0xffFCEBAF)),
-    _ListItem('Orange', Color(0xffF08F66)),
-    _ListItem('Family', Color(0xffF2A38A)),
-    _ListItem('Subscriptions', Color(0xffF7CDD5)),
-    _ListItem('Books', Color(0xffFCEBAF)),
-    _ListItem('Orange', Color(0xffF08F66)),
-    _ListItem('Family', Color(0xffF2A38A)),
-    _ListItem('Subscriptions', Color(0xffF7CDD5)),
-    _ListItem('Books', Color(0xffFCEBAF)),
-    _ListItem('Orange', Color(0xffF08F66)),
-    _ListItem('Family', Color(0xffF2A38A)),
-    _ListItem('Subscriptions', Color(0xffF7CDD5)),
-    _ListItem('Books', Color(0xffFCEBAF)),
+    const _ListItem('Orange', Color(0xffF08F66)),
+    const _ListItem('Family', Color(0xffF2A38A)),
+    const _ListItem('Subscriptions', Color(0xffF7CDD5)),
+    const _ListItem('Books', Color(0xffFCEBAF)),
+    const _ListItem('Orange', Color(0xffF08F66)),
+    const _ListItem('Family', Color(0xffF2A38A)),
+    const _ListItem('Subscriptions', Color(0xffF7CDD5)),
+    const _ListItem('Books', Color(0xffFCEBAF)),
+    const _ListItem('Orange', Color(0xffF08F66)),
+    const _ListItem('Family', Color(0xffF2A38A)),
+    const _ListItem('Subscriptions', Color(0xffF7CDD5)),
+    const _ListItem('Books', Color(0xffFCEBAF)),
+    const _ListItem('Orange', Color(0xffF08F66)),
+    const _ListItem('Family', Color(0xffF2A38A)),
+    const _ListItem('Subscriptions', Color(0xffF7CDD5)),
+    const _ListItem('Books', Color(0xffFCEBAF)),
   ];
+
+  @override
   Widget build(BuildContext context) {
     return CustomScrollView(
-      physics: BouncingScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       slivers: [
         // SliverAppBar(
         //   floating: true,
@@ -86,7 +88,7 @@ class _MainScroll extends StatelessWidget {
             child: Container(
               alignment: Alignment.centerLeft,
               color: Colors.white,
-              child: _Titulo(),
+              child: const _Titulo(),
             ),
           ),
         ),
@@ -94,7 +96,7 @@ class _MainScroll extends StatelessWidget {
         SliverList(
           delegate: SliverChildListDelegate([
             ...items,
-            SizedBox(
+            const SizedBox(
               height: 100,
             )
           ]),
@@ -117,60 +119,22 @@ class _SliverCustomHeaderDelegate extends SliverPersistentHeaderDelegate {
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
-    // TODO: implement build
     return SizedBox.expand(
       child: child,
     );
   }
 
   @override
-  // TODO: implement maxExtent
   double get maxExtent => maxheight;
 
   @override
-  // TODO: implement minExtent
   double get minExtent => minheight;
 
   @override
   bool shouldRebuild(covariant _SliverCustomHeaderDelegate oldDelegate) {
-    // TODO: implement shouldRebuild
     return maxheight != oldDelegate.maxheight ||
         minheight != oldDelegate.minheight ||
         child != oldDelegate.child;
-  }
-}
-
-//----------------------- _ListaTareas ---------------------------------
-class _ListaTareas extends StatelessWidget {
-  final items = [
-    _ListItem('Orange', Color(0xffF08F66)),
-    _ListItem('Family', Color(0xffF2A38A)),
-    _ListItem('Subscriptions', Color(0xffF7CDD5)),
-    _ListItem('Books', Color(0xffFCEBAF)),
-    _ListItem('Orange', Color(0xffF08F66)),
-    _ListItem('Family', Color(0xffF2A38A)),
-    _ListItem('Subscriptions', Color(0xffF7CDD5)),
-    _ListItem('Books', Color(0xffFCEBAF)),
-    _ListItem('Orange', Color(0xffF08F66)),
-    _ListItem('Family', Color(0xffF2A38A)),
-    _ListItem('Subscriptions', Color(0xffF7CDD5)),
-    _ListItem('Books', Color(0xffFCEBAF)),
-    _ListItem('Orange', Color(0xffF08F66)),
-    _ListItem('Family', Color(0xffF2A38A)),
-    _ListItem('Subscriptions', Color(0xffF7CDD5)),
-    _ListItem('Books', Color(0xffFCEBAF)),
-  ];
-
-  _ListaTareas({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-        physics: BouncingScrollPhysics(),
-        itemCount: items.length,
-        itemBuilder: (BuildContext context, int index) => items[index]);
   }
 }
 
@@ -185,12 +149,12 @@ class _ListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.centerLeft,
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       height: 130,
       child: Text(titulo,
-          style: TextStyle(
+          style: const TextStyle(
               color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),
-      padding: EdgeInsets.all(30),
+      padding: const EdgeInsets.all(30),
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(30),
@@ -208,10 +172,10 @@ class _Titulo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: 30),
+        const SizedBox(height: 30),
         Container(
-          margin: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-          child: Text("New",
+          margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+          child: const Text("New",
               style: TextStyle(
                   color: Color(0xff532128),
                   fontSize: 50,
@@ -219,7 +183,7 @@ class _Titulo extends StatelessWidget {
         ),
         Stack(
           children: [
-            SizedBox(
+            const SizedBox(
               width: 100,
             ),
             Positioned(
@@ -227,10 +191,10 @@ class _Titulo extends StatelessWidget {
               child: Container(
                 width: 130,
                 height: 8,
-                color: Color(0xfff7cdd5),
+                color: const Color(0xfff7cdd5),
               ),
             ),
-            Text(
+            const Text(
               "List",
               style: TextStyle(
                   color: Color(0xffd93a30),
