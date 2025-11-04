@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SliverScreen extends StatelessWidget {
-  const SliverScreen({Key? key}) : super(key: key);
+  const SliverScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -9,11 +9,7 @@ class SliverScreen extends StatelessWidget {
       body: Stack(
         children: [
           _MainScroll(),
-          Positioned(
-            bottom: 0,
-            right: -10,
-            child: _BotonNewList(),
-          ),
+          Positioned(bottom: 0, right: -10, child: _BotonNewList()),
         ],
       ),
     );
@@ -31,16 +27,17 @@ class _BotonNewList extends StatelessWidget {
       child: MaterialButton(
         color: const Color(0xffed6762),
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(50),
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(50)),
+        ),
+        child: const Text(
+          'CREATE NEW LIST',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 3,
           ),
         ),
-        child: const Text("CREATE NEW LIST",
-            style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                letterSpacing: 3)),
         onPressed: () {},
       ),
     );
@@ -79,7 +76,6 @@ class _MainScroll extends StatelessWidget {
         //   backgroundColor: Colors.red,
         //   title: _Titulo(),
         // ),
-
         SliverPersistentHeader(
           floating: true,
           delegate: _SliverCustomHeaderDelegate(
@@ -96,9 +92,7 @@ class _MainScroll extends StatelessWidget {
         SliverList(
           delegate: SliverChildListDelegate([
             ...items,
-            const SizedBox(
-              height: 100,
-            )
+            const SizedBox(height: 100),
           ]),
         ),
       ],
@@ -113,15 +107,19 @@ class _SliverCustomHeaderDelegate extends SliverPersistentHeaderDelegate {
   final double maxheight;
   final Widget child;
 
-  _SliverCustomHeaderDelegate(
-      {required this.minheight, required this.maxheight, required this.child});
+  _SliverCustomHeaderDelegate({
+    required this.minheight,
+    required this.maxheight,
+    required this.child,
+  });
 
   @override
   Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return SizedBox.expand(
-      child: child,
-    );
+    BuildContext context,
+    double shrinkOffset,
+    bool overlapsContent,
+  ) {
+    return SizedBox.expand(child: child);
   }
 
   @override
@@ -151,13 +149,18 @@ class _ListItem extends StatelessWidget {
       alignment: Alignment.centerLeft,
       margin: const EdgeInsets.all(10),
       height: 130,
-      child: Text(titulo,
-          style: const TextStyle(
-              color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),
       padding: const EdgeInsets.all(30),
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(30),
+      ),
+      child: Text(
+        titulo,
+        style: const TextStyle(
+          color: Colors.white,
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+        ),
       ),
     );
   }
@@ -166,43 +169,45 @@ class _ListItem extends StatelessWidget {
 //----------------------- _Titulo ---------------------------------
 
 class _Titulo extends StatelessWidget {
-  const _Titulo({Key? key}) : super(key: key);
+  const _Titulo();
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 30),
+        const SizedBox(height: 20),
         Container(
-          margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-          child: const Text("New",
-              style: TextStyle(
-                  color: Color(0xff532128),
-                  fontSize: 50,
-                  fontWeight: FontWeight.bold)),
+          margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
+          child: const Text(
+            'New',
+            style: TextStyle(
+              color: Color(0xff532128),
+              fontSize: 40,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ),
         Stack(
           children: [
-            const SizedBox(
-              width: 100,
-            ),
+            const SizedBox(width: 100),
             Positioned(
               bottom: 8,
               child: Container(
                 width: 130,
-                height: 8,
+                height: 08,
                 color: const Color(0xfff7cdd5),
               ),
             ),
             const Text(
-              "List",
+              'List',
               style: TextStyle(
-                  color: Color(0xffd93a30),
-                  fontSize: 50,
-                  fontWeight: FontWeight.bold),
+                color: Color(0xffd93a30),
+                fontSize: 40,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ],
-        )
+        ),
       ],
     );
   }
